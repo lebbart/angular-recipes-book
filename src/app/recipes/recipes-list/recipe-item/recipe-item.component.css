@@ -1,0 +1,14 @@
+.image-class {
+  max-height: 60px;
+  width: 60px;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  border-radius:50%;
+}
+
+.recipe-item {
+  border-radius: 5px;
+  background: rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  padding: 15px;
+}

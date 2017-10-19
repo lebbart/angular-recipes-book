@@ -1,0 +1,12 @@
+<div fxLayout="row wrap" class="colored box nopad">
+  <div fxFlex="100%">
+    <app-shopping-edit></app-shopping-edit>
+  </div>
+  <div fxFlex="40%">
+    <hr>
+    <p>Shopping list:</p>
+    <a class="recipe-item" href="#" mat-list-item *ngFor="let item of ingredients">
+      <button mat-button color="accent">{{item.name}} ({{item.amount}})</button>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<h3>{{recipe.name}}</h3>
+
+<div fxLayout="row" fxLayout.xs="column">
+  <img [src]="recipe.imagePath"
+       alt="Some Details" class="image-class">
+</div>
+<br>
+<div fxLayout="row" fxLayout.xs="column">
+  <button mat-raised-button [matMenuTriggerFor]="menu" color="warn">
+    <mat-icon>Manage Recipe</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onSentToShoppingList()">
+      <span>To Shopping List</span>
+    </button>
+    <button mat-menu-item disabled>
+      <span>Edit Recipe</span>
+    </button>
+    <button mat-menu-item>
+      <span (click)="onRemoveItem()">Remove Recipe</span>
+    </button>
+  </mat-menu>
+</div>
+<br>
+<div fxLayout="row" fxLayout.xs="column">
+  <div><b>Description:</b></div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="column">
+  <p>{{recipe.description}}</p>
+</div>
+
+<div fxLayout="row" fxLayout.xs="column">
+  <div><b>Ingredients:</b></div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="column">
+  <p>Name | Amount</p>
+</div>
+
+<div fxLayout="row" fxLayout.xs="column">
+  <md-list>
+    <md-list-item *ngFor="let ingredient of recipe.ingredients">
+      <p>{{ingredient.name}} | {{ingredient.amount}}</p>
+    </md-list-item>
+  </md-list>
+</div>

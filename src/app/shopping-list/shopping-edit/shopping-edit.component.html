@@ -1,0 +1,44 @@
+<div fxFlex="50%">
+  <form>
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="45%">
+        <mat-form-field>
+          <input matInput
+                 type='text'
+                 placeholder="Name"
+                 #nameInput>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="45%" fxFlexOffset="5%">
+        <mat-form-field>
+          <input matInput
+                 type='number'
+                 placeholder="Amount"
+                 #amountInput>
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
+        <button mat-raised-button
+                (click)="onAddClick(nameInput, amountInput)"
+                color="primary">
+          Add
+        </button>
+
+        <button mat-raised-button
+                (click)="onRemoveClick()"
+                color="warn">
+          Remove
+        </button>
+
+        <a mat-raised-button
+           (click)="clearFields(nameInput, amountInput)"
+           routerLink=".">
+          Clear
+        </a>
+      </div>
+    </div>
+  </form>
+</div>

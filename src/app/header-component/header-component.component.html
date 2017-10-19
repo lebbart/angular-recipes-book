@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <div class="containerX">
+    <div fxLayout="row wrap" class="colored box nopad">
+
+      <div fxFlex="40%">
+        Recipe Book App
+      </div>
+
+      <div fxFlex="50%">
+        <button mat-button (click)="onMenuClick('recipes')">Recipes</button>
+
+        <button mat-button (click)="onMenuClick('shoppinglist')">Shopping List</button>
+      </div>
+
+      <div fxFlex="10%">
+        <button mat-button [matMenuTriggerFor]="menu">Manage</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Save data</button>
+          <button mat-menu-item>Fetch data</button>
+        </mat-menu>
+      </div>
+
+    </div>
+  </div>
+</mat-toolbar>
+
+<br><br><br>

@@ -1,0 +1,17 @@
+<div class="containerX">
+  <div fxLayout="row wrap" class="colored box nopad">
+    <div fxFlex="40%">
+      <app-recipes-list></app-recipes-list>
+    </div>
+    <div fxFlex="50%" fxFlexOffset="10%">
+
+      <app-recipe-detail *ngIf="recipeDetail; else selectedText"
+                         [recipe]="recipeDetail">
+      </app-recipe-detail>
+
+      <ng-template #selectedText>
+        <p>No selected Item here!</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<a class="recipe-item" (click)="recipeClicked(recipe)" href="#" mat-list-item>
+  <img [src]="recipe.imagePath"
+       class="image-class"
+       alt="{{recipe.name}}">
+  <h4 mat-line>{{recipe.name}}</h4>
+  <p mat-line>{{recipe.description}}</p>
+</a>
