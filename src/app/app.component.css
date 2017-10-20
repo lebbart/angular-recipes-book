@@ -1,0 +1,23 @@
+ul {
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+  padding: 5px;
+  color: green;
+  width: 300px;
+}
+
+.display-dropdown {
+  display: block !important;
+}
+
+.hide-dropdown {
+  display: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
