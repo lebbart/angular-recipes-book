@@ -1,7 +1,7 @@
-<button mat-raised-button color="warn">Add New Recipe</button>
+<button mat-raised-button (click)="onNewRecipe()" color="warn">Add New Recipe</button>
 
 <mat-list>
   <h3 mat-subheader>Recipes</h3>
-  <app-recipe-item *ngFor="let recipe of recipes"
-                   [recipe]="recipe"></app-recipe-item>
+  <app-recipe-item *ngFor="let recipe of recipes; let id = index"
+                   [recipe]="recipe" [id]="id"></app-recipe-item>
 </mat-list>

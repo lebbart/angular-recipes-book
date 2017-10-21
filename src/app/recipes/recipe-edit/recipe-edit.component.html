@@ -1,0 +1,58 @@
+<div fxFlex="50%">
+  <form>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="75%">
+        <mat-form-field>
+          <input matInput
+                 type='text'
+                 name="name"
+                 placeholder="Name"
+                 [(ngModel)]="recipe.name">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="75%">
+        <mat-form-field>
+          <input matInput
+                 name="imagepath"
+                 type='text'
+                 placeholder="Image Path"
+                 [(ngModel)]="recipe.imagePath">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="75%">
+        <mat-form-field>
+          <input matInput
+                 name="desc"
+                 type='text'
+                 placeholder="Description"
+                 [(ngModel)]="recipe.description">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
+        <button mat-raised-button
+                (click)="onAddEditClick()"
+                color="primary">
+          Add Edit Recipe
+        </button>
+
+        <button mat-raised-button
+                [routerLink]="['/recipes']"
+                color="accent">
+          Back to recipes
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

@@ -1,4 +1,4 @@
-<a class="recipe-item cursor-pointer" (click)="recipeClicked(recipe)" mat-list-item>
+<a class="recipe-item cursor-pointer" routerLinkActive="active-recipe" [routerLink]="[id]" mat-list-item>
   <img [src]="recipe.imagePath"
        class="image-class"
        alt="{{recipe.name}}">
