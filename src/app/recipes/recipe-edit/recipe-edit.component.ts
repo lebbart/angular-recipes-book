@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import {Recipe} from '../recipe.model';
+import {Ingredient} from "../../shared/ingredient.model";
 
 @Component({
   selector: 'app-recipe-edit',
@@ -25,6 +26,15 @@ export class RecipeEditComponent implements OnInit {
 
         if (this.editMode) {
           this.recipe = this.recipeService.getRecipe(this.id);
+        } else {
+          this.recipe = {
+            name: '',
+            imagePath: '',
+            description: '',
+            ingredients: [
+              {name: '', amount: 0}
+            ]
+          };
         }
       }
     );
