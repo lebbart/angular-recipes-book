@@ -5,8 +5,8 @@
   <div fxFlex="40%">
     <hr>
     <p>Shopping list:</p>
-    <a class="recipe-item" mat-list-item *ngFor="let item of ingredients">
-      <button mat-button color="accent">{{item.name}} ({{item.amount}})</button>
+    <a class="recipe-item" mat-list-item *ngFor="let item of ingredients; let i = index">
+      <button mat-button color="accent" (click)="onEditItem(i)" >{{item.name}} ({{item.amount}})</button>
     </a>
   </div>
 </div>

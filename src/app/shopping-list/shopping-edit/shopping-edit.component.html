@@ -1,12 +1,15 @@
 <div fxFlex="50%">
-  <form>
+  <form (ngSubmit)="onAddClick(f)" #f="ngForm">
     <div fxLayout="row" fxLayout.xs="column">
       <div fxFlex="45%">
         <mat-form-field>
           <input matInput
                  type='text'
-                 placeholder="Name"
-                 #nameInput>
+                 name="name"
+                 ngModel
+                 #name="ngModel"
+                 required
+                 placeholder="Name">
         </mat-form-field>
       </div>
 
@@ -14,15 +17,24 @@
         <mat-form-field>
           <input matInput
                  type='number'
-                 placeholder="Amount"
-                 #amountInput>
+                 name="amount"
+                 ngModel
+                 required
+                 pattern="^[1-9]+[0-9]*$"
+                 #amount="ngModel"
+                 placeholder="Amount">
         </mat-form-field>
+        <span class="error" *ngIf="!f.valid">
+            <span *ngIf="f.controls.amount.errors.required && amount.touched">This field is required!</span>
+            <span *ngIf="!amount.valid && amount.touched">You should enter number greater than 0.</span>
+        </span>
       </div>
     </div>
     <div fxLayout="row" fxLayout.xs="column">
       <div fxFlex="100%">
         <button mat-raised-button
-                (click)="onAddClick(nameInput, amountInput)"
+                type="submit"
+                [disabled]="!f.valid"
                 color="primary">
           Add
         </button>
@@ -30,12 +42,13 @@
         <button mat-raised-button
                 (click)="onRemoveClick()"
                 color="warn">
+          <!--[disabled]="nameInput.value != 1000"-->
           Remove
         </button>
 
         <a mat-raised-button
-           (click)="clearFields(nameInput, amountInput)"
-           routerLink=".">
+           (click)="clearFields(f)">
+          <!--[disabled]="nameInput.value.length == 0 || amountInput.value.length == 0"-->
           Clear
         </a>
       </div>
