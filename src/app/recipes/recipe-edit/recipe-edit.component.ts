@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 import {Recipe} from '../recipe.model';
+import {FormGroup, Form} from "@angular/forms/forms";
 
 @Component({
   selector: 'app-recipe-edit',
@@ -12,6 +13,7 @@ export class RecipeEditComponent implements OnInit {
   recipe: Recipe;
   id: number;
   editMode = false;
+  recipeForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService) {
@@ -38,6 +40,8 @@ export class RecipeEditComponent implements OnInit {
       }
     );
   }
+
+  // private initForm()
 
   onAddEditClick() {
 

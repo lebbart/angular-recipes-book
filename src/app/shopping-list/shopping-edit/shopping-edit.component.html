@@ -1,5 +1,5 @@
 <div fxFlex="50%">
-  <form (ngSubmit)="onAddClick(f)" #f="ngForm">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <div fxLayout="row" fxLayout.xs="column">
       <div fxFlex="45%">
         <mat-form-field>
@@ -36,19 +36,18 @@
                 type="submit"
                 [disabled]="!f.valid"
                 color="primary">
-          Add
+          {{editMode ? 'Update' : 'Add'}}
         </button>
 
         <button mat-raised-button
+                *ngIf="editMode"
                 (click)="onRemoveClick()"
                 color="warn">
-          <!--[disabled]="nameInput.value != 1000"-->
           Remove
         </button>
 
         <a mat-raised-button
            (click)="clearFields(f)">
-          <!--[disabled]="nameInput.value.length == 0 || amountInput.value.length == 0"-->
           Clear
         </a>
       </div>

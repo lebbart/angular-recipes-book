@@ -11,7 +11,7 @@ export class ShoppingListService {
     new Ingredient('Brocolli', 10),
     new Ingredient('Saussages', 100),
     new Ingredient('Carrot', 5),
-    new Ingredient('Basilic', 3),
+    new Ingredient('Basilic', 3)
   ];
 
   getIngredients() {
@@ -20,6 +20,16 @@ export class ShoppingListService {
 
   getIngredient(index: number) {
     return this.ingredients[index];
+  }
+
+  updateIngrediet(index: number, ingredient: Ingredient) {
+    this.ingredients[index] = ingredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  removeIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   addNewIngredient(ingredient: Ingredient) {
