@@ -1,56 +1,10 @@
 <div fxFlex="75%">
-  <form>
-
-    <div fxLayout="row" fxLayout.xs="column">
-      <div fxFlex="100%">
-        <mat-form-field>
-          <input matInput
-                 type='text'
-                 id="name"
-                 name="name"
-                 placeholder="Name"
-                 [(ngModel)]="recipe.name">
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div fxLayout="row" fxLayout.xs="column">
-      <div fxFlex="100%">
-        <mat-form-field>
-          <input matInput
-                 name="imagepath"
-                 id="imagepath"
-                 type='text'
-                 placeholder="Image Path"
-                 [(ngModel)]="recipe.imagePath">
-        </mat-form-field>
-      </div>
-    </div>
-
-    <div fxLayout="row" fxLayout.xs="column">
-      <div fxFlex="100%">
-        <img style="max-width: 200px" [src]="recipe.imagePath" alt="Image here!">
-      </div>
-    </div>
-
-    <div fxLayout="row" fxLayout.xs="column">
-      <div fxFlex="100%">
-        <mat-form-field>
-          <textarea matInput
-                    name="desc"
-                    id="descriptiion"
-                    [(ngModel)]="recipe.description"
-                    type='text'
-                    rows="6"
-                    placeholder="Description"></textarea>
-        </mat-form-field>
-      </div>
-    </div>
+  <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
 
     <div fxLayout="row" fxLayout.xs="column">
       <div fxFlex="100%">
         <button mat-raised-button
-                (click)="onAddEditClick()"
+                type="submit"
                 color="primary">
           Add Edit Recipe
         </button>
@@ -65,30 +19,84 @@
 
     <div fxLayout="row" fxLayout.xs="column">
       <div fxFlex="100%">
+        <mat-form-field>
+          <input matInput
+                 type='text'
+                 id="name"
+                 formControlName="name"
+                 placeholder="Name">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <input matInput
+                 type='text'
+                 id="imagepath"
+                 formControlName="imagePath"
+                 placeholder="Image Path">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
+        <img style="max-width: 200px" src="" alt="Image here!">
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
+        <mat-form-field>
+          <textarea matInput
+                    name="desc"
+                    id="descriptiion"
+                    formControlName="description"
+                    type='text'
+                    rows="6"
+                    placeholder="Description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="100%">
         <h3>Ingredients:</h3>
       </div>
     </div>
-    <div fxLayout="row" fxLayout.xs="column">
-      <div fxFlex="60%">
-        <mat-form-field>
-          <input matInput
-                 type='text'
-                 placeholder="Ingredient name">
-        </mat-form-field>
-      </div>
-      <div fxFlex="30%">
-        <mat-form-field>
-          <input matInput
-                 type='text'
-                 placeholder="Amount">
-        </mat-form-field>
-      </div>
-      <div fxFlex="10%">
-        <button mat-raised-button
-                (click)="removeIngredient()"
-                color="accent">
-          Remove
-        </button>
+
+    <div formArrayName="ingredients">
+
+      <div fxLayout="row" fxLayout="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index;" [formGroupName]="i">
+
+        <div fxFlex="60%">
+          <mat-form-field>
+            <input matInput
+                   type='text'
+                   formControlName="name"
+                   placeholder="Ingredient name">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="30%">
+          <mat-form-field>
+            <input matInput
+                   formControlName="amount"
+                   type='text'
+                   placeholder="Amount">
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="10%">
+          <button mat-raised-button
+                  (click)="removeIngredient(i)"
+                  color="accent">
+            Remove
+          </button>
+        </div>
+
       </div>
     </div>
 
