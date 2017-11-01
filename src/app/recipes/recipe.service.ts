@@ -2,9 +2,12 @@ import { Recipe } from './recipe.model';
 import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import {Subject} from "rxjs/Rx";
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe(
       'McDonalds Burger',
@@ -20,7 +23,7 @@ export class RecipeService {
     new Recipe(
       'Burger King Sandwich',
       'Yammy!',
-      'http://burger-king.by/images/actions/710x468_BK_BigChik.jpg',
+      'https://i.ytimg.com/vi/FfWVPcFTp6I/maxresdefault.jpg',
       [
         new Ingredient('Meat', 2),
         new Ingredient('Salad', 5),
@@ -52,5 +55,20 @@ export class RecipeService {
 
   setIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredientsFromRecipeDetail(ingredients);
+  }
+
+  addNewRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  removeIngredient(id: number) {
+    this.recipes.splice(id, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
