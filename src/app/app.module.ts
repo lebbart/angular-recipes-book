@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 
@@ -15,7 +15,7 @@ import {
 } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponentComponent } from './header-component/header-component.component';
+import { HeaderComponent } from './header-component/header-component.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -28,14 +28,16 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {RecipeDetailResolverService} from './recipes/recipe-detail/recipedetail-resolver.service';
+import { RecipeDetailResolverService } from './recipes/recipe-detail/recipedetail-resolver.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { HttpModule } from '@angular/http';
+import { DataStorageService } from './shared/data-storage.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponentComponent,
+    HeaderComponent,
     RecipesComponent,
     RecipesListComponent,
     RecipeDetailComponent,
@@ -59,10 +61,16 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     MatToolbarModule,
     MatListModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, ShoppingListService, RecipeDetailResolverService],
+  providers: [
+    RecipeService,
+    DataStorageService,
+    ShoppingListService,
+    RecipeDetailResolverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

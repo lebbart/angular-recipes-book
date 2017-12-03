@@ -6,7 +6,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
 import {RecipeDetailResolverService} from './recipes/recipe-detail/recipedetail-resolver.service';
 import {RecipeStartComponent} from './recipes/recipe-start/recipe-start.component';
-import {RecipeEditComponent} from "./recipes/recipe-edit/recipe-edit.component";
+import {RecipeEditComponent} from './recipes/recipe-edit/recipe-edit.component';
 
 const appRoutes: Routes = [
   {

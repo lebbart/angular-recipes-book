@@ -14,8 +14,8 @@
       <div fxFlex="10%">
         <button mat-button [matMenuTriggerFor]="menu">Manage</button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Save data</button>
-          <button mat-menu-item>Fetch data</button>
+          <button mat-menu-item (click)="onSaveData()">Save data</button>
+          <button mat-menu-item (click)="onGetData()">Fetch data</button>
         </mat-menu>
       </div>
     </div>

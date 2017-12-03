@@ -8,7 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './recipes-list.component.html'
 })
 export class RecipesListComponent implements OnInit {
-  recipes:Recipe[];
+  recipes: Recipe[];
 
   constructor(private recipeService:RecipeService,
               private route:ActivatedRoute,
